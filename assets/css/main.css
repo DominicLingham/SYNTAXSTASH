@@ -1,2 +1,16 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+@theme {
+    --color-ebony-clay-50: #F0F3F5;
+    --color-ebony-clay-100: #E4EAED;
+    --color-ebony-clay-200: #B8C6CF;
+    --color-ebony-clay-300: #92A5B3;
+    --color-ebony-clay-400: #54677A;
+    --color-ebony-clay-500: #242F40;
+    --color-ebony-clay-600: #1D293B;
+    --color-ebony-clay-700: #141E30;
+    --color-ebony-clay-800: #0D1526;
+    --color-ebony-clay-900: #070D1C;
+    --color-ebony-clay-950: #030712;
+}
