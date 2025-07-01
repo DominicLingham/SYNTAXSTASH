@@ -25,3 +25,6 @@ logs
 
 # Visual Studio Code
 .vscode
+
+# Automation
+*.ps1

@@ -3,7 +3,7 @@ import ThemeToggle from './ThemeToggle.vue'
 </script>
 
 <template>
-  <nav>
+  <nav class="sticky top-0 z-10 backdrop-blur-md">
     <UContainer>
       <div class="flex justify-between items-center py-4">
         <div>
@@ -12,17 +12,17 @@ import ThemeToggle from './ThemeToggle.vue'
             class="text-xl font-bold flex items-center md:text-3xl "
           >
             <img
-              src="/SyntaxStashLogo-dark.svg"
-              height="50px"
-              width="70px"
+              src="/SyntaxStashLogoFull.png"
+              width="200px"
             >
-            <span>SyntaxStash</span>
           </NuxtLink>
         </div>
 
         <div class="flex items-center gap-4">
+          <UButton to="/login">
+            Get started
+          </UButton>
           <ThemeToggle />
-          <UButton>Get started</UButton>
         </div>
       </div>
     </UContainer>
