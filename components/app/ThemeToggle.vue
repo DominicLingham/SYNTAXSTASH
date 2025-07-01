@@ -1,24 +1,30 @@
-<script lang="ts" setup>
+<script setup>
 const colorMode = useColorMode()
 
-const isLight = computed({
+const isDark = computed({
   get() {
-    return colorMode.value === 'light'
+    return colorMode.value === 'dark'
   },
-  set(value) {
-    colorMode.preference = value ? 'light' : 'dark'
+  set(_isDark) {
+    colorMode.preference = _isDark ? 'dark' : 'light'
   },
 })
 </script>
 
 <template>
-  <USwitch
-    v-model="isLight"
-    unchecked-icon="solar:moon-bold"
-    checked-icon="solar:sun-bold"
-  />
+  <ClientOnly v-if="!colorMode?.forced">
+    <UButton
+      :icon="isDark ? 'i-lucide-moon' : 'i-lucide-sun'"
+      color="neutral"
+      variant="ghost"
+      @click="isDark = !isDark"
+    />
+
+    <template #fallback>
+      <div class="size-8" />
+    </template>
+  </ClientOnly>
 </template>
 
 <style>
-
 </style>
