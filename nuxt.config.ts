@@ -6,6 +6,8 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxtjs/tailwindcss',
     '@nuxt/ui',
+    '@nuxtjs/color-mode',
+    '@vueuse/nuxt',
   ],
   css: ['~/assets/css/main.css'],
   eslint: {
