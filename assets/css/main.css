@@ -2,15 +2,35 @@
 @import "@nuxt/ui";
 
 @theme {
-    --color-ebony-clay-50: #F0F3F5;
-    --color-ebony-clay-100: #E4EAED;
-    --color-ebony-clay-200: #B8C6CF;
-    --color-ebony-clay-300: #92A5B3;
-    --color-ebony-clay-400: #54677A;
-    --color-ebony-clay-500: #242F40;
-    --color-ebony-clay-600: #1D293B;
-    --color-ebony-clay-700: #141E30;
-    --color-ebony-clay-800: #0D1526;
-    --color-ebony-clay-900: #070D1C;
-    --color-ebony-clay-950: #030712;
+    --color-green-50: #eefff1;
+    --color-green-100: #d6ffe0;
+    --color-green-200: #b0ffc4;
+    --color-green-300: #73ff96;
+    --color-green-400: #2ff961;
+    --color-green-500: #05f140;
+    --color-green-600: #00bc2d;
+    --color-green-700: #029327;
+    --color-green-800: #087324;
+    --color-green-900: #095e21;
+    
+    --color-green-950: #00350f;
+    --color-woodsmoke-50: #f7f7f8;
+    --color-woodsmoke-100: #f0eef0;
+    --color-woodsmoke-200: #dcd9de;
+    --color-woodsmoke-300: #bdb8c1;
+    --color-woodsmoke-400: #99919f;
+    --color-woodsmoke-500: #7d7384;
+    --color-woodsmoke-600: #665d6c;
+    --color-woodsmoke-700: #534c58;
+    --color-woodsmoke-800: #48414b;
+    --color-woodsmoke-900: #3e3941;
+    --color-woodsmoke-950: #1a181b;
+    
+    --color-primary: var(--color-green-600);
+    --color-secondary: #3C3C3C;
+
+    --color-background-dark: var(--color-woodsmoke-950);
+    --color-background: #F5FFF8;
+
+
 }

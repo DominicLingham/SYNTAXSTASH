@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="flex min-h-screen flex-col bg-background">
+  <div class="text-secondary flex min-h-screen flex-col dark:bg-background-dark dark:text-white">
     <AppNavBar />
     <main>
       <UContainer>
