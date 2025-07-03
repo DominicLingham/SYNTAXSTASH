@@ -13,7 +13,7 @@
           Level up your coding journey — effortlessly save, organize, and generate resources, from tutorials and blog
           posts to AI-crafted insights tailored to your learning.
         </p>
-        <UButton to="/" size="xl" class="mb-4">
+        <UButton to="/login" size="xl" class="mb-4">
           Get Started
         </UButton>
       </div>
