@@ -3,6 +3,8 @@ import tryParseEnv from './try-parse-env'
 
 const EnvSchema = z.object({
   NODE_ENV: z.string(),
+  DATABASE_URL_DEV: z.string(),
+  DATABASE_URL_PROD: z.string(),
 })
 
 export type EnvSchema = z.infer<typeof EnvSchema>
