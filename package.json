@@ -13,11 +13,13 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.1",
     "@nuxt/eslint": "^1.4.1",
     "@nuxt/ui": "^3.2.0",
     "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/tailwindcss": "^7.0.0-beta.0",
     "@vueuse/nuxt": "^13.4.0",
+    "drizzle-orm": "^0.44.2",
     "eslint": "^9.29.0",
     "nuxt": "^3.17.5",
     "vue": "^3.5.17",
@@ -26,6 +28,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.16.1",
+    "drizzle-kit": "^0.31.4",
     "eslint-plugin-format": "^1.0.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2"
