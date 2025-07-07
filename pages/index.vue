@@ -7,14 +7,15 @@
     <section>
       <div class="max-w-7xl px-6 py-20 text-center">
         <h1 class="text-4xl sm:text-5xl font-bold mb-6">
-          Your Smart Resource Hub
+          All your coding resources, in one place
         </h1>
         <p class="text-lg my-4">
+          No more scattered bookmarks or forgotten tabs!
           Level up your coding journey — effortlessly save, organize, and generate resources, from tutorials and blog
-          posts to AI-crafted insights tailored to your learning.
+          posts to AI-crafted resources tailored to your learning.
         </p>
         <UButton to="/login" size="xl" class="mb-4">
-          Get Started
+          Get started for free
         </UButton>
       </div>
     </section>
@@ -25,11 +26,11 @@
         <!-- Save Resources -->
         <div>
           <h2 class="text-3xl font-semibold mb-4">
-            📁 Save Resources
+            📁 Collect and organize effortlessly
           </h2>
           <p class="mb-6">
-            Organize your learning journey. Save links to your favorite tutorials, videos, blog posts, and more — all in
-            one accessible place. No more lost tabs or forgotten bookmarks.
+            Keep track of every useful tutorial, video, blog post, or tool you find.
+            Save them in one tidy hub that’s always just a click away — way better than browser bookmarks.
           </p>
           <a href="#" class="text-primary font-medium hover:underline">Learn more →</a>
         </div>
@@ -52,8 +53,7 @@
             🧠 Generate Resources
           </h2>
           <p class="mb-6">
-            Need a quick summary, tutorial, or blog post? Input your topic and preferred format — our AI will generate
-            high-quality, custom content to fit your style and purpose.
+            Struggling with a concept? Just ask. Instantly generate summaries, tutorials, or explanations tailored to your level and learning style.
           </p>
           <a href="#" class="text-primary font-medium hover:underline">Explore the generator →</a>
         </div>
@@ -64,10 +64,10 @@
     <section class="bg-green-700 text-white py-16 text-center my-4 rounded-md">
       <div class="max-w-4xl mx-auto px-6">
         <h2 class="text-3xl font-bold mb-4">
-          Ready to streamline your content flow?
+          Stay focused. Stay organized. Keep coding.
         </h2>
         <p class="text-lg mb-6">
-          Start saving and generating with ease. Your all-in-one resource tool is just a click away.
+          Your personal coding companion is here to help you learn faster and smarter. Start now — it’s free.
         </p>
         <a
           href="#"
