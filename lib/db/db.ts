@@ -1,6 +1,6 @@
 import { neon } from '@neondatabase/serverless'
 import { drizzle } from 'drizzle-orm/neon-http'
-import env from '~/lib/env'
+import env from '../env'
 import * as schema from './schema'
 
 const databaseURL = env.NODE_ENV === 'development' ? env.DATABASE_URL_DEV : env.DATABASE_URL_PROD

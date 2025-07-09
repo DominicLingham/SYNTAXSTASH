@@ -1,8 +1,11 @@
 import { integer, pgTable, text, uuid } from 'drizzle-orm/pg-core'
 
+import { user } from './auth'
+
 export const tag = pgTable('tag', {
   id: uuid().primaryKey().defaultRandom(),
   name: text().notNull(),
+  userId: uuid().references(() => user.id),
   createdAt: integer().notNull().$default(() => Date.now()),
 })
 
