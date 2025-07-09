@@ -14,6 +14,8 @@ jobs:
       NODE_ENV: development
       DATABASE_URL_DEV: ${{ secrets.DATABASE_URL_DEV }}
       DATABASE_URL_PROD: ${{ secrets.DATABASE_URL_PROD }}
+      BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
+      BETTER_AUTH_URL: ${{ secrets.BETTER_AUTH_URL }}
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
