@@ -6,6 +6,7 @@ export default withNuxt(antfu({
   stylistic: {
 
   },
+  ignores: ['**/migrations/*'],
   vue: true,
   rules: {
     'ts/no-redeclare': 'off',
