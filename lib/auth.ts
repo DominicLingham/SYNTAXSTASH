@@ -1,10 +1,24 @@
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
-import { db } from './db/db'
+import { createAuthMiddleware } from 'better-auth/api'
 
+import { db } from './db/db'
 import env from './env'
 
 export const auth = betterAuth({
+  // Hook to prevent duplicate call to /get-session on client side if logged out
+  hooks: {
+    after: createAuthMiddleware(async (ctx) => {
+      if (ctx.path === '/get-session') {
+        if (!ctx.context.session) {
+          return ctx.json({
+            session: null,
+            user: null,
+          })
+        }
+      }
+    }),
+  },
   database: drizzleAdapter(db, {
     provider: 'pg',
   }),

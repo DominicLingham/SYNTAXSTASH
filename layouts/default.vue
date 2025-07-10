@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-
+// Provide the session data on SSR
+const authStore = useAuthStore()
+await authStore.init()
 </script>
 
 <template>
