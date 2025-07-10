@@ -3,10 +3,17 @@ import { createAuthClient } from 'better-auth/vue'
 const authClient = createAuthClient()
 
 export const useAuthStore = defineStore('useAuthStore', () => {
-  const session = authClient.useSession()
+  // Session state to be updated on init
+  const session = ref<Awaited<ReturnType<typeof authClient.useSession>> | null> (null)
 
-  const user = computed(() => session.value.data?.user)
-  const loading = computed(() => session.value.isPending || session.value.isRefetching)
+  // Initialize the auth session state from server side
+  async function init() {
+    const data = await authClient.useSession(useFetch)
+    session.value = data
+  }
+
+  const user = computed(() => session.value?.data?.user)
+  const loading = computed(() => session.value?.isPending)
 
   async function signInGithub() {
     await authClient.signIn.social({
@@ -21,6 +28,7 @@ export const useAuthStore = defineStore('useAuthStore', () => {
   }
 
   return {
+    init,
     loading,
     user,
     signInGithub,
