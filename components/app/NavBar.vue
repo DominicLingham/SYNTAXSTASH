@@ -1,5 +1,8 @@
 <script lang="ts" setup>
+import UserDropdown from '../auth/UserDropdown.vue'
 import ThemeToggle from './ThemeToggle.vue'
+
+const authStore = useAuthStore()
 </script>
 
 <template>
@@ -19,9 +22,13 @@ import ThemeToggle from './ThemeToggle.vue'
         </div>
 
         <div class="flex items-center gap-4">
-          <UButton to="/login">
+          <UButton
+            v-if="!authStore.user"
+            to="/login"
+          >
             Get started
           </UButton>
+          <UserDropdown />
           <ThemeToggle />
         </div>
       </div>
