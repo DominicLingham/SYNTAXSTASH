@@ -13,7 +13,7 @@ export const resource = pgTable('resource', {
   isExternal: boolean().notNull(),
   isFavourite: boolean().notNull().default(false),
   isPublic: boolean().notNull().default(false),
-  userId: uuid().references(() => user.id),
+  userId: text().references(() => user.id),
   createdAt: integer().notNull().$default(() => Date.now()),
   updatedAt: integer().notNull().$default(() => Date.now()).$onUpdate(() => Date.now()),
 })

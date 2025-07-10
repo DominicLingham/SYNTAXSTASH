@@ -5,7 +5,7 @@ import { user } from './auth'
 export const tag = pgTable('tag', {
   id: uuid().primaryKey().defaultRandom(),
   name: text().notNull(),
-  userId: uuid().references(() => user.id),
+  userId: text().references(() => user.id),
   createdAt: integer().notNull().$default(() => Date.now()),
 })
 
