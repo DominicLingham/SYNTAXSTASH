@@ -18,11 +18,13 @@
     "@nuxt/ui": "^3.2.0",
     "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/tailwindcss": "^7.0.0-beta.0",
+    "@pinia/nuxt": "^0.11.1",
     "@vueuse/nuxt": "^13.4.0",
     "better-auth": "^1.2.12",
     "drizzle-orm": "^0.44.2",
     "eslint": "^9.29.0",
     "nuxt": "^3.17.5",
+    "pinia": "^3.0.3",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1",
     "zod": "^3.25.67"
