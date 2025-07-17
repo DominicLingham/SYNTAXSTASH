@@ -23,6 +23,14 @@ export const useAuthStore = defineStore('useAuthStore', () => {
     })
   }
 
+  async function signInGoogle() {
+    await authClient.signIn.social({
+      provider: 'google',
+      callbackURL: '/dashboard',
+      errorCallbackURL: '/error',
+    })
+  }
+
   async function signOut() {
     await authClient.signOut()
   }
@@ -32,6 +40,7 @@ export const useAuthStore = defineStore('useAuthStore', () => {
     loading,
     user,
     signInGithub,
+    signInGoogle,
     signOut,
   }
 })

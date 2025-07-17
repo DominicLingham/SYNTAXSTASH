@@ -13,6 +13,8 @@ const items = ref<DropdownMenuItem[]>([
     onSelect: () => router.push('/sign-out'),
   },
 ])
+
+const avatarPath = computed(() => authStore.user?.image || '/SyntaxStashLogo.png')
 </script>
 
 <template>
@@ -34,7 +36,7 @@ const items = ref<DropdownMenuItem[]>([
       size="xl"
       :label="authStore.user.name"
       :avatar="{
-        src: authStore.user.image,
+        src: avatarPath,
       }"
     />
   </UDropdownMenu>
