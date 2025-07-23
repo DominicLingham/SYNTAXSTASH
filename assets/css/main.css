@@ -31,6 +31,28 @@
 
     --color-background-dark: var(--color-woodsmoke-950);
     --color-background: #F5FFF8;
+}
 
+h1 {
+  @apply text-5xl font-bold;
+}
 
+h2 {
+  @apply text-4xl font-semibold;
+}
+
+h3 {
+  @apply text-3xl font-semibold;
+}
+
+h4 {
+  @apply text-2xl font-medium;
+}
+
+h5 {
+  @apply text-xl font-medium;
+}
+
+h6 {
+  @apply text-lg font-normal;
 }
