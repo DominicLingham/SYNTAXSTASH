@@ -19,10 +19,16 @@
     "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/tailwindcss": "^7.0.0-beta.0",
     "@pinia/nuxt": "^0.11.1",
+    "@tiptap/extension-code-block-lowlight": "^3.0.7",
+    "@tiptap/extension-underline": "^3.0.7",
+    "@tiptap/pm": "^3.0.7",
+    "@tiptap/starter-kit": "^3.0.7",
+    "@tiptap/vue-3": "^3.0.7",
     "@vueuse/nuxt": "^13.4.0",
     "better-auth": "^1.2.12",
     "drizzle-orm": "^0.44.2",
     "eslint": "^9.29.0",
+    "lowlight": "^3.3.0",
     "nuxt": "^3.17.5",
     "pinia": "^3.0.3",
     "vue": "^3.5.17",
@@ -31,10 +37,12 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.16.1",
+    "@tailwindcss/typography": "^0.5.16",
     "drizzle-kit": "^0.31.4",
     "eslint-plugin-format": "^1.0.1",
     "husky": "^9.1.7",
-    "lint-staged": "^16.1.2"
+    "lint-staged": "^16.1.2",
+    "sass-embedded": "^1.89.2"
   },
   "lint-staged": {
     "*": "npm run lint"
