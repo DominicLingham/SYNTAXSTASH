@@ -1,4 +1,6 @@
 export * from './auth'
+export * from './diary'
+export * from './diary-entry'
 export * from './relations'
 export * from './resource'
 export * from './resource-tag'

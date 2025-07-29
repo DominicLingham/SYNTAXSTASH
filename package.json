@@ -23,6 +23,7 @@
     "@tiptap/extension-underline": "^3.0.7",
     "@tiptap/pm": "^3.0.7",
     "@tiptap/starter-kit": "^3.0.7",
+    "@tiptap/static-renderer": "^3.0.7",
     "@tiptap/vue-3": "^3.0.7",
     "@vueuse/nuxt": "^13.4.0",
     "better-auth": "^1.2.12",
