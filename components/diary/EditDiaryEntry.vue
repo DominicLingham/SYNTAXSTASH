@@ -1,22 +1,16 @@
-<script setup lang="ts">
-import type { DiaryTimelineItem } from './UserDiary.vue'
-import { defaultTipTapContent } from '#imports'
-import TipTapEditor from '../app/TipTapEditor.vue'
+<script lang="ts" setup>
+import type { TimelineItem } from '@nuxt/ui'
 
-// const {handleSubmit, resetForm} = useForm({
-//   validationSchema
-// })
+const props = defineProps<{
+  entry: any
+}>()
 
-const state = ref<DiaryTimelineItem>({
-  title: '',
-  content: defaultTipTapContent,
-})
+const internalState = ref<TimelineItem>(props.entry)
 
 function onDrawerToggle(isOpen: boolean) {
   if (!isOpen) {
     setTimeout(() => {
-      state.value.title = ''
-      state.value.content = defaultTipTapContent
+      internalState.value = { ...props.entry }
     }, 200)
   }
 }
@@ -34,13 +28,13 @@ function onDrawerToggle(isOpen: boolean) {
     @update:open="onDrawerToggle"
   >
     <UButton
-      label="Add entry"
+      label="Edit entry"
       icon="material-symbols:add"
       variant="subtle"
     />
     <template #header>
       <UInput
-        v-model="state.title"
+        v-model="internalState.title"
         variant="ghost" placeholder="Today's story..."
         :ui="{
           base: 'p-4 text-3xl font-bold text-primary hover:bg-transparent focus:bg-transparent',
@@ -49,8 +43,8 @@ function onDrawerToggle(isOpen: boolean) {
       />
     </template>
     <template #body>
-      <pre>{{ state }}</pre>
-      <TipTapEditor v-model="state.content" />
+      <pre>{{ internalState }}</pre>
+      <AppTipTapEditor v-model="internalState.content" />
     </template>
     <template #footer>
       <UButton>Save</UButton>

@@ -1,9 +1,25 @@
-import { boolean, pgTable, text, uuid } from 'drizzle-orm/pg-core'
+import { boolean, integer, pgTable, text, uuid } from 'drizzle-orm/pg-core'
+import { createInsertSchema } from 'drizzle-zod'
 import { user } from './auth'
 
 export const diary = pgTable('diary', {
   id: uuid().primaryKey().defaultRandom(),
   name: text().notNull(),
-  userId: text().notNull().references(() => user.id),
+  description: text(),
+  userId: text().notNull().references(() => user.id).unique(),
   isPublic: boolean().notNull().default(false),
+  createdAt: integer().notNull().$default(() => Date.now()),
+  updatedAt: integer().notNull().$default(() => Date.now()).$onUpdate(() => Date.now()),
+  deletedAt: integer(),
+})
+
+export const InsertDiary = createInsertSchema(diary, {
+  name: field => field.min(1).max(50),
+  description: field => field.max(1000),
+}).omit({
+  id: true,
+  userId: true,
+  createdAt: true,
+  updatedAt: true,
+  deletedAt: true,
 })

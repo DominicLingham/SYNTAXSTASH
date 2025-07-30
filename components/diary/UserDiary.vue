@@ -1,23 +1,24 @@
 <script lang="ts" setup>
 import type { TimelineItem } from '@nuxt/ui'
+import type { SelectDiaryEntry } from '~/lib/db/schema'
 import { AppStaticRenderer, DiaryAddDiary } from '#components'
 
-const hasDiary = true
+const hasDiary = false
 
-const items = [
+export type DiaryTimelineItem = Pick<SelectDiaryEntry, 'title' | 'content'> & TimelineItem
+
+const items: DiaryTimelineItem[] = [
   {
-    date: 'Apr 5, 2025',
     title: 'Testing & Deployment',
-    content: '',
+    content: defaultTipTapContent,
     icon: 'i-lucide-check-circle',
   },
   {
-    date: 'Apr 5, 2025',
     title: 'Stuff',
-    content: '',
+    content: defaultTipTapContent,
     icon: 'i-lucide-check-circle',
   },
-] satisfies TimelineItem[]
+]
 </script>
 
 <template>
@@ -40,9 +41,12 @@ const items = [
           }"
           class="w-[100%]"
         >
-          <template #description>
+          <template #description="{ item }">
             <div class="w-full p-4">
-              <AppStaticRenderer />
+              <div>
+                <DiaryEditDiaryEntry :entry="item" />
+              </div>
+              <AppStaticRenderer :content="item.content" />
             </div>
           </template>
         </UTimeline>
