@@ -1,4 +1,4 @@
-import { boolean, integer, jsonb, pgTable, text, uuid } from 'drizzle-orm/pg-core'
+import { bigint, boolean, jsonb, pgTable, text, uuid } from 'drizzle-orm/pg-core'
 import { createInsertSchema } from 'drizzle-zod'
 import { user } from './auth'
 
@@ -14,9 +14,9 @@ export const resource = pgTable('resource', {
   isFavourite: boolean().notNull().default(false),
   isPublic: boolean().notNull().default(false),
   userId: text().references(() => user.id),
-  createdAt: integer().notNull().$default(() => Date.now()),
-  updatedAt: integer().notNull().$default(() => Date.now()).$onUpdate(() => Date.now()),
-  deletedAt: integer(),
+  createdAt: bigint({ mode: 'number' }).notNull().$default(() => Date.now()),
+  updatedAt: bigint({ mode: 'number' }).notNull().$default(() => Date.now()).$onUpdate(() => Date.now()),
+  deletedAt: bigint({ mode: 'number' }),
 })
 
 export const InsertResource = createInsertSchema(resource, {

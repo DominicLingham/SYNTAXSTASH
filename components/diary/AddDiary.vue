@@ -3,7 +3,8 @@ import type { FormSubmitEvent } from '@nuxt/ui'
 import type * as z from 'zod'
 import { InsertDiary } from '~/lib/db/schema'
 
-const open = ref(false)
+const open = ref<boolean>(false)
+const isSubmitting = ref<boolean>(false)
 
 type Schema = z.infer<typeof InsertDiary>
 
@@ -14,8 +15,23 @@ const state = reactive<Schema>({
 })
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  // eslint-disable-next-line no-console
-  console.log(event.data)
+  isSubmitting.value = true
+  try {
+    const inserted = await $fetch('/api/diary', {
+      method: 'post',
+      body: event.data,
+    })
+
+    // eslint-disable-next-line no-console
+    console.log(inserted)
+  }
+  catch (e) {
+    const error = e as Error
+    console.error(error)
+  }
+  finally {
+    isSubmitting.value = false
+  }
 }
 </script>
 

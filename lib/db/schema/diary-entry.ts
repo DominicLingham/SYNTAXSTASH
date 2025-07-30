@@ -1,5 +1,5 @@
 import type { JSONContent } from '@tiptap/vue-3'
-import { integer, jsonb, pgTable, text, uuid } from 'drizzle-orm/pg-core'
+import { bigint, jsonb, pgTable, text, uuid } from 'drizzle-orm/pg-core'
 import { createInsertSchema } from 'drizzle-zod'
 import { diary } from './diary'
 
@@ -8,9 +8,9 @@ export const diaryEntry = pgTable('diaryEntry', {
   title: text().notNull(),
   content: jsonb().$type<JSONContent>().notNull(),
   diaryId: uuid().notNull().references(() => diary.id),
-  createdAt: integer().notNull().$default(() => Date.now()),
-  updatedAt: integer().notNull().$default(() => Date.now()).$onUpdate(() => Date.now()),
-  deletedAt: integer(),
+  createdAt: bigint({ mode: 'number' }).notNull().$default(() => Date.now()),
+  updatedAt: bigint({ mode: 'number' }).notNull().$default(() => Date.now()).$onUpdate(() => Date.now()),
+  deletedAt: bigint({ mode: 'number' }),
 })
 
 export const InsertDiaryEntry = createInsertSchema(diaryEntry, {
