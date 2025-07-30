@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import type { FormSubmitEvent } from '@nuxt/ui'
-import type * as z from 'zod'
+import { z } from 'zod'
 import { InsertDiary } from '~/lib/db/schema'
+
+void z
 
 const open = ref<boolean>(false)
 const isSubmitting = ref<boolean>(false)
