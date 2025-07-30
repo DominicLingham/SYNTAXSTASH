@@ -7,6 +7,12 @@ const router = useRouter()
 
 const items = ref<DropdownMenuItem[]>([
   {
+    label: 'Dashboard',
+    icon: 'material-symbols:dashboard',
+    type: 'link',
+    onSelect: () => router.push('/dashboard'),
+  },
+  {
     label: 'Logout',
     icon: 'i-lucide-log-out',
     type: 'link',

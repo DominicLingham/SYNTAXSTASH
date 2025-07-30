@@ -8,6 +8,34 @@
       "when": 1752079976026,
       "tag": "0000_watery_lady_ursula",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1753650000972,
+      "tag": "0001_worthless_malice",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1753734131767,
+      "tag": "0002_happy_meggan",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1753904249631,
+      "tag": "0003_harsh_lord_hawal",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1753910711697,
+      "tag": "0004_public_nick_fury",
+      "breakpoints": true
     }
   ]
 }
