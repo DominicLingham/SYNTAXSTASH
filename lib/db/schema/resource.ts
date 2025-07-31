@@ -1,5 +1,4 @@
 import { bigint, boolean, jsonb, pgTable, text, uuid } from 'drizzle-orm/pg-core'
-import { createInsertSchema } from 'drizzle-zod'
 import { user } from './auth'
 
 export const resource = pgTable('resource', {
@@ -17,16 +16,4 @@ export const resource = pgTable('resource', {
   createdAt: bigint({ mode: 'number' }).notNull().$default(() => Date.now()),
   updatedAt: bigint({ mode: 'number' }).notNull().$default(() => Date.now()).$onUpdate(() => Date.now()),
   deletedAt: bigint({ mode: 'number' }),
-})
-
-export const InsertResource = createInsertSchema(resource, {
-  name: field => field.min(1).max(150),
-  description: field => field.max(300),
-}).omit({
-  id: true,
-  slug: true,
-  userId: true,
-  createdAt: true,
-  updatedAt: true,
-  deletedAt: true,
 })

@@ -1,13 +1,9 @@
 <script lang="ts" setup>
-import type { TimelineItem } from '@nuxt/ui'
-import type { SelectDiaryEntry } from '~/lib/db/schema'
 import { AppStaticRenderer, DiaryAddDiary } from '#components'
 
-const hasDiary = false
+const hasDiary = true
 
-export type DiaryTimelineItem = Pick<SelectDiaryEntry, 'title' | 'content'> & TimelineItem
-
-const items: DiaryTimelineItem[] = [
+const items = [
   {
     title: 'Testing & Deployment',
     content: defaultTipTapContent,
