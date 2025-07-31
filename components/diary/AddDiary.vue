@@ -1,16 +1,18 @@
 <script lang="ts" setup>
 import type { FormSubmitEvent } from '@nuxt/ui'
+import type { AddDiaryType } from '~/lib/zod-schemas'
+import { addDiarySchema } from '~/lib/zod-schemas'
 
 const open = ref<boolean>(false)
 const isSubmitting = ref<boolean>(false)
 
-const state = reactive({
+const state = reactive<AddDiaryType>({
   name: '',
   description: '',
   isPublic: false,
 })
 
-async function onSubmit(event: FormSubmitEvent) {
+async function onSubmit(event: FormSubmitEvent<AddDiaryType>) {
   isSubmitting.value = true
   try {
     const inserted = await $fetch('/api/diary', {
@@ -47,6 +49,7 @@ async function onSubmit(event: FormSubmitEvent) {
 
     <template #body>
       <UForm
+        :schema="addDiarySchema"
         :state="state"
         class="flex flex-col gap-4"
         @submit="onSubmit"

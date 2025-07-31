@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import type { DiaryTimelineItem } from './UserDiary.vue'
 import { defaultTipTapContent } from '#imports'
 import TipTapEditor from '../app/TipTapEditor.vue'
 
-const state = ref<DiaryTimelineItem>({
+const state = ref<any>({
   title: '',
   content: defaultTipTapContent,
 })
