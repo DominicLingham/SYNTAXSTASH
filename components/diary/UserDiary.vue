@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { AppStaticRenderer, DiaryAddDiary } from '#components'
 
-const hasDiary = true
+const hasDiary = false
 
 const items = [
   {
