@@ -1,20 +1,17 @@
 <script lang="ts" setup>
 import type { FormSubmitEvent } from '@nuxt/ui'
-import type { z } from 'zod'
 import { InsertDiary } from '~/lib/db/schema'
 
 const open = ref<boolean>(false)
 const isSubmitting = ref<boolean>(false)
 
-type Schema = z.infer<typeof InsertDiary>
-
-const state = reactive<Schema>({
+const state = reactive<InsertDiary>({
   name: '',
   description: '',
   isPublic: false,
 })
 
-async function onSubmit(event: FormSubmitEvent<Schema>) {
+async function onSubmit(event: FormSubmitEvent<InsertDiary>) {
   isSubmitting.value = true
   try {
     const inserted = await $fetch('/api/diary', {
