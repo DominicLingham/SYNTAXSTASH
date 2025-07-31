@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { FormSubmitEvent } from '@nuxt/ui'
-import { z } from 'zod'
+import * as z from 'zod'
 import { InsertDiary } from '~/lib/db/schema'
 
 void z
