@@ -1,3 +1,4 @@
+import type { z } from 'zod'
 import { bigint, boolean, pgTable, text, uuid } from 'drizzle-orm/pg-core'
 import { createInsertSchema } from 'drizzle-zod'
 import { user } from './auth'
@@ -23,3 +24,6 @@ export const InsertDiary = createInsertSchema(diary, {
   updatedAt: true,
   deletedAt: true,
 })
+
+export type InsertDiary = z.infer<typeof InsertDiary>
+export type SelectDiary = typeof diary.$inferSelect
