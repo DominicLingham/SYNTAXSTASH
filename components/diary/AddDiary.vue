@@ -1,17 +1,16 @@
 <script lang="ts" setup>
 import type { FormSubmitEvent } from '@nuxt/ui'
-import { InsertDiary } from '~/lib/db/schema'
 
 const open = ref<boolean>(false)
 const isSubmitting = ref<boolean>(false)
 
-const state = reactive<InsertDiary>({
+const state = reactive({
   name: '',
   description: '',
   isPublic: false,
 })
 
-async function onSubmit(event: FormSubmitEvent<InsertDiary>) {
+async function onSubmit(event: FormSubmitEvent) {
   isSubmitting.value = true
   try {
     const inserted = await $fetch('/api/diary', {
@@ -49,7 +48,6 @@ async function onSubmit(event: FormSubmitEvent<InsertDiary>) {
     <template #body>
       <UForm
         :state="state"
-        :schema="InsertDiary"
         class="flex flex-col gap-4"
         @submit="onSubmit"
       >

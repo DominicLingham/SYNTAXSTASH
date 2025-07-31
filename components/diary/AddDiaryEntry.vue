@@ -3,10 +3,6 @@ import type { DiaryTimelineItem } from './UserDiary.vue'
 import { defaultTipTapContent } from '#imports'
 import TipTapEditor from '../app/TipTapEditor.vue'
 
-// const {handleSubmit, resetForm} = useForm({
-//   validationSchema
-// })
-
 const state = ref<DiaryTimelineItem>({
   title: '',
   content: defaultTipTapContent,
