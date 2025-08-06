@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import type { AddDiaryEntryType } from '~/lib/zod-schemas'
 import { defaultTipTapContent } from '#imports'
 import TipTapEditor from '../app/TipTapEditor.vue'
 
-const state = ref<any>({
+const state = ref<AddDiaryEntryType>({
   title: '',
   content: defaultTipTapContent,
 })
