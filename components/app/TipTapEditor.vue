@@ -8,6 +8,7 @@ import css from 'highlight.js/lib/languages/css'
 import js from 'highlight.js/lib/languages/javascript'
 import json from 'highlight.js/lib/languages/json'
 import python from 'highlight.js/lib/languages/python'
+import sql from 'highlight.js/lib/languages/sql'
 import ts from 'highlight.js/lib/languages/typescript'
 import html from 'highlight.js/lib/languages/xml'
 import { all, createLowlight } from 'lowlight'
@@ -31,6 +32,10 @@ lowlight.register('typescript', ts)
 lowlight.register('json', json)
 lowlight.register('python', python)
 lowlight.register('py', python)
+lowlight.register('jsx', js)
+lowlight.register('vue', html)
+lowlight.register('scss', css)
+lowlight.register('sql', sql)
 
 const extensions: AnyExtension[] = [
   StarterKit,

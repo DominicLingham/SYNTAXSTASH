@@ -11,3 +11,5 @@ export const diaryEntry = pgTable('diaryEntry', {
   updatedAt: bigint({ mode: 'number' }).notNull().$default(() => Date.now()).$onUpdate(() => Date.now()),
   deletedAt: bigint({ mode: 'number' }),
 })
+
+export type SelectDiaryEntry = typeof diaryEntry.$inferSelect

@@ -2,16 +2,11 @@ import { db } from '~/lib/db/db'
 import { diary, diaryEntry } from '~/lib/db/schema'
 import { addDiarySchema } from '~/lib/zod-schemas'
 import { defaultTipTapContent } from '~/utils'
+import defineAuthenticatedEventHandler from '~/utils/define-authenticated-event-handler'
 
-export default defineEventHandler(async (event) => {
+export default defineAuthenticatedEventHandler(async (event) => {
   const user = event.context.user
 
-  if (!user) {
-    return sendError(event, createError({
-      statusCode: 401,
-      statusMessage: 'Unauthorized',
-    }))
-  }
   const result = await readValidatedBody(event, addDiarySchema.safeParse)
 
   if (!result.success) {

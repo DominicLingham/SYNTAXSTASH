@@ -1,9 +1,14 @@
+import type { User } from 'better-auth'
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { createAuthMiddleware } from 'better-auth/api'
 
 import { db } from './db/db'
 import env from './env'
+
+export type UserWithId = Omit<User, 'id'> & {
+  id: string
+}
 
 export const auth = betterAuth({
   // Hook to prevent duplicate call to /get-session on client side if logged out
