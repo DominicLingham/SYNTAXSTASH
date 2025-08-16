@@ -1,20 +1,19 @@
 <script lang="ts" setup>
+import type { SelectDiaryWithEntries } from '~/lib/db/schema'
 import { AppStaticRenderer, DiaryAddDiary } from '#components'
 
-const hasDiary = false
+const { data: userDiary, refresh } = await useFetch<SelectDiaryWithEntries>('/api/diary')
 
-const items = [
-  {
-    title: 'Testing & Deployment',
-    content: defaultTipTapContent,
+const hasDiary = computed(() => userDiary.value)
+
+const entries = computed(() => {
+  return userDiary.value?.entries?.map(x => ({
+    id: x.id,
+    title: x.title,
+    content: x.content,
     icon: 'i-lucide-check-circle',
-  },
-  {
-    title: 'Stuff',
-    content: defaultTipTapContent,
-    icon: 'i-lucide-check-circle',
-  },
-]
+  })) || []
+})
 </script>
 
 <template>
@@ -22,14 +21,16 @@ const items = [
     <template v-if="hasDiary">
       <div class="flex-1 flex flex-col gap-4">
         <div class="flex justify-between items-center">
-          <h1>My Diary</h1>
+          <h1 class="text-4xl font-bold">
+            {{ userDiary?.name }}
+          </h1>
           <DiaryAddDiaryEntry />
         </div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa illo maxime natus quasi, quis velit aliquid quod ipsum, vero unde exercitationem quae at ullam enim? Reprehenderit dolorum quisquam eius dolorem!</p>
+        <p>{{ userDiary?.description }}</p>
       </div>
       <UCard>
         <UTimeline
-          :items="items"
+          :items="entries"
           reverse
           :ui="{
             indicator: 'bg-primary text-black',
@@ -42,7 +43,9 @@ const items = [
               <div>
                 <DiaryEditDiaryEntry :entry="item" />
               </div>
-              <AppStaticRenderer :content="item.content" />
+              <AppStaticRenderer
+                :content="item.content"
+              />
             </div>
           </template>
         </UTimeline>
@@ -51,7 +54,7 @@ const items = [
     <template v-else>
       <div class="flex-1 flex flex-col items-center justify-center gap-4 w-full">
         <p>Nothing here yet....</p>
-        <DiaryAddDiary />
+        <DiaryAddDiary @update:diary-created="refresh" />
       </div>
     </template>
   </div>

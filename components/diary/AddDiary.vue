@@ -3,6 +3,8 @@ import type { FormSubmitEvent } from '@nuxt/ui'
 import type { AddDiaryType } from '~/lib/zod-schemas'
 import { addDiarySchema } from '~/lib/zod-schemas'
 
+const emits = defineEmits(['update:diaryCreated'])
+
 const open = ref<boolean>(false)
 const isSubmitting = ref<boolean>(false)
 
@@ -20,8 +22,8 @@ async function onSubmit(event: FormSubmitEvent<AddDiaryType>) {
       body: event.data,
     })
 
-    // eslint-disable-next-line no-console
-    console.log(inserted)
+    emits('update:diaryCreated', inserted)
+    open.value = false
   }
   catch (e) {
     const error = e as Error

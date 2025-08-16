@@ -1,0 +1,25 @@
+import type { H3Event, H3EventContext } from 'h3'
+import type { UserWithId } from '~/lib/auth'
+
+type AuthenticatedEvent = H3Event & {
+  context: H3EventContext & {
+    user: UserWithId
+  }
+}
+
+export default function defineAuthenticatedEventHandler(
+  handler: (event: AuthenticatedEvent) => any,
+) {
+  return defineEventHandler(async (event) => {
+    const user = event.context.user
+
+    if (!user) {
+      return sendError(event, createError({
+        statusCode: 401,
+        statusMessage: 'Unauthorized',
+      }))
+    }
+
+    return handler(event as AuthenticatedEvent)
+  })
+}

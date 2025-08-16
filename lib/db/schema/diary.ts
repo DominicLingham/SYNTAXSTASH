@@ -1,3 +1,4 @@
+import type { SelectDiaryEntry } from './diary-entry'
 import { bigint, boolean, pgTable, text, uuid } from 'drizzle-orm/pg-core'
 import { user } from './auth'
 
@@ -13,3 +14,7 @@ export const diary = pgTable('diary', {
 })
 
 export type SelectDiary = typeof diary.$inferSelect
+
+export type SelectDiaryWithEntries = SelectDiary & {
+  entries: SelectDiaryEntry[]
+}
