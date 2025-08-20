@@ -28,8 +28,7 @@ function onDrawerToggle(isOpen: boolean) {
     @update:open="onDrawerToggle"
   >
     <UButton
-      label="Edit entry"
-      icon="material-symbols:add"
+      icon="material-symbols:edit"
       variant="subtle"
     />
     <template #header>
@@ -43,7 +42,6 @@ function onDrawerToggle(isOpen: boolean) {
       />
     </template>
     <template #body>
-      <pre>{{ internalState }}</pre>
       <AppTipTapEditor v-model="internalState.content" />
     </template>
     <template #footer>

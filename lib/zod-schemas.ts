@@ -23,7 +23,9 @@ export const addDiarySchema = z.object({
 })
 
 export const addDiaryEntrySchema = z.object({
-  title: z.string().min(1).max(50),
+  title: z.string()
+    .min(1, { message: 'Title cannot be empty' })
+    .max(50, { message: 'Title cannot be more than 50 characters' }),
   content: JSONContentSchema,
 })
 
