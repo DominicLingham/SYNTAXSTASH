@@ -11,6 +11,14 @@ const isDrawerOpen = ref(false)
 const isSubmitting = ref<boolean>(false)
 const errorMessages = ref<ZodIssue[]>([])
 
+const titleValidationMessage = computed(() => {
+  if (!errorMessages.value.length)
+    return undefined
+
+  const titleError = errorMessages.value.find(x => x.path[0] === 'title')
+  return titleError?.message
+})
+
 const state = ref<AddDiaryEntryType>({
   title: '',
   content: defaultTipTapContent,
@@ -30,10 +38,11 @@ function onDrawerToggle(isOpen: boolean) {
 async function onSubmit() {
   isSubmitting.value = true
   try {
-    const result = addDiaryEntrySchema.safeParse(state.value)
+    const validationResult = addDiaryEntrySchema.safeParse(state.value)
 
-    if (!result.success) {
-      errorMessages.value = result.error.issues
+    if (!validationResult.success) {
+      errorMessages.value = validationResult.error.issues
+      return
     }
 
     const inserted = await $fetch('/api/diary-entries', {
@@ -51,11 +60,6 @@ async function onSubmit() {
   finally {
     isSubmitting.value = false
   }
-}
-
-function fieldError(name: string) {
-  const issue = errorMessages.value.find(e => e.path[0] === name)
-  return issue?.message || ''
 }
 </script>
 
@@ -78,7 +82,7 @@ function fieldError(name: string) {
     />
     <template #header>
       <UFormField
-        :error="fieldError('title')"
+        :error="titleValidationMessage"
         :ui="{ error: 'font-bold' }"
       >
         <UInput

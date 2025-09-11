@@ -1,9 +1,12 @@
 <script lang="ts" setup>
 import type { TimelineItem } from '@nuxt/ui'
-import type { SelectDiaryWithEntries } from '~/lib/db/schema'
 import { AppStaticRenderer, DiaryAddDiaryEntry, DiaryEditDiaryEntry } from '#components'
+import { useDiaryStore } from '~/stores/diary'
+import { hasJsonContent } from '~/utils'
 
-const { data: userDiary, refresh } = await useFetch<SelectDiaryWithEntries>('/api/diary')
+const diaryStore = useDiaryStore()
+
+const { userDiary } = storeToRefs(diaryStore)
 
 // Check if the user has a diary
 const hasDiary = computed(() => !!userDiary.value)
@@ -21,34 +24,22 @@ const timelineItems = computed<TimelineItem[]>(() => {
       content: entry.content,
     })) || []
 })
-
-// Check if the JSON content is not empty
-function hasJsonContent(content: any): boolean {
-  if (!content || !Array.isArray(content.content))
-    return false
-  return content.content.some((node: any) => {
-    if (node.type === 'paragraph') {
-      return node.content?.some((child: any) => !!child.text?.trim())
-    }
-    return true
-  })
-}
 </script>
 
 <template>
-  <div class="min-h-60 flex flex-col gap-4 p-4 rounded-md border-2 border-primary-500 dark:border-primary-800 bg-elevated">
+  <div class="min-h-60 flex flex-col gap-4 p-4 rounded-md">
     <template v-if="hasDiary">
       <div class="flex-1 flex flex-col gap-4">
         <div class="flex justify-between items-center">
           <h1 class="text-4xl font-bold">
             {{ userDiary?.name }}
           </h1>
-          <DiaryAddDiaryEntry @update:diary-entry-created="refresh" />
+          <DiaryAddDiaryEntry @update:diary-entry-created="diaryStore.refreshUserDiary" />
         </div>
         <p>{{ userDiary?.description }}</p>
       </div>
 
-      <UCard>
+      <UCard class="border-l-4 border-primary-500 rounded-2xl outline-offset-4 pl-4">
         <UTimeline
           :items="timelineItems"
           :ui="{
@@ -64,10 +55,9 @@ function hasJsonContent(content: any): boolean {
               </div>
               <div class="flex gap-2">
                 <DiaryEditDiaryEntry :entry="item" />
-                <UButton
-                  icon="material-symbols:delete"
-                  variant="subtle"
-                  color="error"
+                <DiaryRemoveDiaryEntry
+                  :entry-id="item.id"
+                  @update:diary-entry-removed="diaryStore.refreshUserDiary"
                 />
               </div>
             </div>
@@ -89,7 +79,7 @@ function hasJsonContent(content: any): boolean {
     <template v-else>
       <div class="flex-1 flex flex-col items-center justify-center gap-4 w-full">
         <p>Nothing here yet....</p>
-        <DiaryAddDiary @update:diary-created="refresh" />
+        <DiaryAddDiary @update:diary-created="diaryStore.refreshUserDiary" />
       </div>
     </template>
   </div>

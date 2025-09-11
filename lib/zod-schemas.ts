@@ -29,5 +29,17 @@ export const addDiaryEntrySchema = z.object({
   content: JSONContentSchema,
 })
 
+export const diaryQuerySchema = z.object({
+  entries: z.string()
+    .optional()
+    .transform(val => val === 'true'),
+})
+
+export const deleteDiaryEntrySchema = z.object({
+  entryId: z.string(),
+})
+
+export type diaryQueryType = typeof diaryQuerySchema._type
 export type AddDiaryType = typeof addDiarySchema._type
 export type AddDiaryEntryType = typeof addDiaryEntrySchema._type
+export type deleteDiaryEntryType = typeof deleteDiaryEntrySchema._type

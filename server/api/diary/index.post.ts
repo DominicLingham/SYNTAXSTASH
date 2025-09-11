@@ -36,7 +36,7 @@ export default defineAuthenticatedEventHandler(async (event) => {
   catch {
     return sendError(event, createError({
       statusCode: 500,
-      statusMessage: 'Failed to create diary or entry',
+      statusMessage: 'Failed to create diary',
     }))
   }
 })

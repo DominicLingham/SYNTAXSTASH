@@ -9,3 +9,15 @@ export const defaultTipTapContent: JSONContent = {
     },
   ],
 }
+
+// Check if the JSON content is not empty
+export function hasJsonContent(content: any): boolean {
+  if (!content || !Array.isArray(content.content))
+    return false
+  return content.content.some((node: any) => {
+    if (node.type === 'paragraph') {
+      return node.content?.some((child: any) => !!child.text?.trim())
+    }
+    return true
+  })
+}

@@ -5,7 +5,7 @@
 <template>
   <div class="flex-1 flex flex-col md:flex-row">
     <div class="w-64 px-4 pb-4">
-      <UCard class="border border-primary-500 dark:border-primary-800">
+      <UCard>
         <template #header>
           <div class="flex gap-2 items-center">
             <UIcon
@@ -17,10 +17,18 @@
           </div>
         </template>
         <div class="flex flex-col gap-4">
-          <ULink to="/dashboard/resources">
+          <ULink
+            class="p-2 rounded-md hover:bg-elevated hover:translate-x-0.5 hover:border-primary-500 transition ease-linear"
+            active-class="border-l-6 bg-elevated font-medium"
+            to="/dashboard/resources"
+          >
             Resources
           </ULink>
-          <ULink to="/dashboard/diary">
+          <ULink
+            class="p-2 rounded-md hover:bg-elevated hover:translate-x-0.5 hover:border-primary-500 transition ease-linear"
+            active-class="border-l-6 bg-elevated font-medium"
+            to="/dashboard/diary"
+          >
             Diary
           </ULink>
         </div>
