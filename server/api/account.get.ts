@@ -28,6 +28,7 @@ export default defineAuthenticatedEventHandler(async (event) => {
       id: userWithAccounts.id,
       name: userWithAccounts.name,
       username: userWithAccounts.username,
+      bio: userWithAccounts.bio,
       email: userWithAccounts.email,
       emailVerified: userWithAccounts.emailVerified,
       image: userWithAccounts.image,

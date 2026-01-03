@@ -46,6 +46,7 @@ export const updateUserSchema = z.object({
     .min(1, { message: 'Name cannot be empty' })
     .max(100, { message: 'Name cannot be more than 100 characters' }),
   image: z.string().url({ message: 'Must be a valid URL' }).nullable().optional(),
+  bio: z.string().max(150, { message: 'Bio cannot be more than 150 characters' }).optional(),
 })
 
 export const setUsernameSchema = z.object({
