@@ -21,6 +21,7 @@ export default defineAuthenticatedEventHandler(async (event) => {
       .set({
         name: result.data.name,
         image: result.data.image,
+        bio: result.data.bio,
         updatedAt: new Date(),
       })
       .where(eq(user.id, authUser.id))

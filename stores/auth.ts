@@ -19,7 +19,7 @@ export const useAuthStore = defineStore('useAuthStore', () => {
   }
 
   // Update user data locally for immediate UI updates
-  function updateUserData(updates: { name?: string, image?: string | null }) {
+  function updateUserData(updates: { name?: string, image?: string | null, bio?: string | null }) {
     if (session.value?.data?.user) {
       // Create new references to trigger Vue reactivity
       const updatedUser = {

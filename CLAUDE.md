@@ -43,6 +43,7 @@ npx drizzle-kit studio   # Open Drizzle Studio GUI
 - `/components/` - Vue components organized by feature (auth/, diary/, resources/)
 - `/stores/` - Pinia state management
 - `/utils/` - Helper functions including `defineAuthenticatedEventHandler`
+- `/types/` - TypeScript types
 
 ### Authentication Flow
 - OAuth providers: GitHub, Google (configured in `/lib/auth.ts`)

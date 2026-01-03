@@ -1,23 +1,10 @@
 <script lang="ts" setup>
 import type { ZodIssue } from 'zod'
+import type { AccountDetails } from '@/types/account'
 import type { UpdateUserType } from '~/lib/zod-schemas'
 import { updateUserSchema } from '~/lib/zod-schemas'
 
 const authStore = useAuthStore()
-
-type AccountDetails = {
-  id: string
-  name: string
-  username: string | null
-  email: string
-  emailVerified: boolean
-  image: string | null
-  createdAt: string
-  connectedAccounts: {
-    provider: string
-    connectedAt: string
-  }[]
-}
 
 const { data: account, refresh } = await useFetch<AccountDetails>('/api/account')
 
@@ -28,6 +15,7 @@ const errorMessages = ref<ZodIssue[]>([])
 const editForm = ref<UpdateUserType>({
   name: '',
   image: null,
+  bio: '',
 })
 
 // Provider display info
@@ -40,6 +28,7 @@ function startEditing() {
   editForm.value = {
     name: account.value?.name || '',
     image: account.value?.image || null,
+    bio: account.value?.bio || '',
   }
   errorMessages.value = []
   isEditing.value = true
@@ -70,6 +59,7 @@ async function saveChanges() {
     authStore.updateUserData({
       name: editForm.value.name,
       image: editForm.value.image,
+      bio: editForm.value.bio,
     })
 
     await refresh()
@@ -128,21 +118,38 @@ function formatDate(dateString: string) {
 
         <div class="space-y-6">
           <!-- Avatar and Basic Info -->
-          <div class="flex items-center gap-4">
-            <UAvatar
-              :src="account?.image || undefined"
-              :alt="account?.name"
-              size="xl"
-              class="ring-2 ring-zinc-200 dark:ring-zinc-700"
-            />
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <UAvatar
+                :src="account?.image || undefined"
+                :alt="account?.name"
+                size="xl"
+                class="ring-2 ring-zinc-200 dark:ring-zinc-700"
+              />
+              <div>
+                <p class="font-medium text-zinc-900 dark:text-zinc-100 text-lg">
+                  {{ account?.name }}
+                </p>
+                <p class="text-primary font-mono">
+                  @{{ account?.username }}
+                </p>
+              </div>
+            </div>
+
             <div>
-              <p class="font-medium text-zinc-900 dark:text-zinc-100 text-lg">
-                {{ account?.name }}
+              <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                Member Since
               </p>
-              <p class="text-primary font-mono">
-                @{{ account?.username }}
+              <p class="text-zinc-900 dark:text-zinc-100 mt-1">
+                {{ account?.createdAt ? formatDate(account.createdAt) : '-' }}
               </p>
             </div>
+          </div>
+
+          <div v-if="account?.bio">
+            <p class="text-zing-900 dark:text-zinc-100 mt-1">
+              {{ account?.bio }}
+            </p>
           </div>
 
           <!-- Edit Form -->
@@ -163,6 +170,19 @@ function formatDate(dateString: string) {
               />
               <template #hint>
                 <span class="text-xs text-zinc-500">Leave empty to use your OAuth provider's avatar</span>
+              </template>
+            </UFormField>
+
+            <UFormField label="Bio" :error="fieldError('bio')">
+              <UTextarea
+                v-model="editForm.bio"
+                :maxlength="150"
+                autoresize
+                placeholder="Tell everyone about yourself and your journey..."
+                class="w-full"
+              />
+              <template #hint>
+                <span class="text-xs text-zinc-500">{{ editForm.bio?.length ?? 0 }}/150</span>
               </template>
             </UFormField>
 
@@ -222,22 +242,6 @@ function formatDate(dateString: string) {
                     Verified
                   </UBadge>
                 </div>
-              </div>
-              <div>
-                <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
-                  Display Name
-                </p>
-                <p class="text-zinc-900 dark:text-zinc-100 mt-1">
-                  {{ account?.name }}
-                </p>
-              </div>
-              <div>
-                <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
-                  Member Since
-                </p>
-                <p class="text-zinc-900 dark:text-zinc-100 mt-1">
-                  {{ account?.createdAt ? formatDate(account.createdAt) : '-' }}
-                </p>
               </div>
             </div>
           </div>
