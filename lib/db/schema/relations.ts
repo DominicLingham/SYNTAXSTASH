@@ -1,6 +1,6 @@
 import { relations } from 'drizzle-orm'
 
-import { user } from './auth'
+import { account, user } from './auth'
 import { diary } from './diary'
 import { diaryEntry } from './diary-entry'
 import { resource } from './resource'
@@ -41,9 +41,17 @@ export const diaryEntryRelations = relations(diaryEntry, ({ one }) => ({
   }),
 }))
 
-export const userRelations = relations(user, ({ one }) => ({
+export const userRelations = relations(user, ({ one, many }) => ({
   diary: one(diary, {
     fields: [user.id],
     references: [diary.userId],
+  }),
+  accounts: many(account),
+}))
+
+export const accountRelations = relations(account, ({ one }) => ({
+  user: one(user, {
+    fields: [account.userId],
+    references: [user.id],
   }),
 }))

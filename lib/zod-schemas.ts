@@ -41,7 +41,25 @@ export const deleteDiaryEntrySchema = z.object({
   id: z.string().uuid(),
 })
 
+export const updateUserSchema = z.object({
+  name: z.string()
+    .min(1, { message: 'Name cannot be empty' })
+    .max(100, { message: 'Name cannot be more than 100 characters' }),
+  image: z.string().url({ message: 'Must be a valid URL' }).nullable().optional(),
+})
+
+export const setUsernameSchema = z.object({
+  username: z.string()
+    .min(3, { message: 'Username must be at least 3 characters' })
+    .max(20, { message: 'Username cannot be more than 20 characters' })
+    .regex(/^[a-z]/i, { message: 'Username must start with a letter' })
+    .regex(/^\w+$/, { message: 'Username can only contain letters, numbers, and underscores' })
+    .transform(val => val.toLowerCase()),
+})
+
 export type AddDiaryType = typeof addDiarySchema._type
 export type AddDiaryEntryType = typeof addDiaryEntrySchema._type
 export type UpdateDiaryEntryType = typeof updateDiaryEntrySchema._type
 export type DeleteDiaryEntryType = typeof deleteDiaryEntrySchema._type
+export type UpdateUserType = typeof updateUserSchema._type
+export type SetUsernameType = typeof setUsernameSchema._type
