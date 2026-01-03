@@ -29,5 +29,19 @@ export const addDiaryEntrySchema = z.object({
   content: JSONContentSchema,
 })
 
+export const updateDiaryEntrySchema = z.object({
+  id: z.string().uuid(),
+  title: z.string()
+    .min(1, { message: 'Title cannot be empty' })
+    .max(50, { message: 'Title cannot be more than 50 characters' }),
+  content: JSONContentSchema,
+})
+
+export const deleteDiaryEntrySchema = z.object({
+  id: z.string().uuid(),
+})
+
 export type AddDiaryType = typeof addDiarySchema._type
 export type AddDiaryEntryType = typeof addDiaryEntrySchema._type
+export type UpdateDiaryEntryType = typeof updateDiaryEntrySchema._type
+export type DeleteDiaryEntryType = typeof deleteDiaryEntrySchema._type

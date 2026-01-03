@@ -9,7 +9,9 @@ export default defineAuthenticatedEventHandler(async (event) => {
     const result: SelectDiaryWithEntries | undefined = await db.query.diary.findFirst({
       where: (diary, { eq }) => eq(diary.userId, user.id),
       with: {
-        entries: true,
+        entries: {
+          where: (entry, { isNull }) => isNull(entry.deletedAt),
+        },
       },
     })
 
