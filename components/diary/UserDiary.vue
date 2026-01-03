@@ -33,10 +33,26 @@ function hasJsonContent(content: any): boolean {
     return true
   })
 }
+
+// Format date as "Wed Aug 20 16:45"
+function formatDate(dateString: string | undefined): string {
+  if (!dateString)
+    return ''
+  const date = new Date(dateString)
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  const day = days[date.getDay()]
+  const month = months[date.getMonth()]
+  const dayOfMonth = date.getDate()
+  const year = date.getFullYear()
+  const hours = date.getHours().toString().padStart(2, '0')
+  const minutes = date.getMinutes().toString().padStart(2, '0')
+  return `${day} ${month} ${dayOfMonth} ${year} ${hours}:${minutes}`
+}
 </script>
 
 <template>
-  <div class="min-h-60 flex flex-col gap-4 p-4 rounded-md border-2 border-primary-500 dark:border-primary-800 bg-elevated">
+  <div class="min-h-60 flex flex-col gap-4 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 shadow-sm">
     <template v-if="hasDiary">
       <div class="flex-1 flex flex-col gap-4">
         <div class="flex justify-between items-center">
@@ -80,7 +96,7 @@ function hasJsonContent(content: any): boolean {
           </template>
 
           <template #date="{ item }">
-            {{ item.date ? new Date(item.date) : '' }}
+            {{ formatDate(item.date) }}
           </template>
         </UTimeline>
       </UCard>

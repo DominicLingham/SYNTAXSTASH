@@ -4,6 +4,7 @@
 @config "../../tailwind.config.ts";
 
 @theme {
+    /* Primary: Green - keeping the existing vibrant green */
     --color-green-50: #eefff1;
     --color-green-100: #d6ffe0;
     --color-green-200: #b0ffc4;
@@ -14,25 +15,49 @@
     --color-green-700: #029327;
     --color-green-800: #087324;
     --color-green-900: #095e21;
-    
     --color-green-950: #00350f;
-    --color-woodsmoke-50: #f7f7f8;
-    --color-woodsmoke-100: #f0eef0;
-    --color-woodsmoke-200: #dcd9de;
-    --color-woodsmoke-300: #bdb8c1;
-    --color-woodsmoke-400: #99919f;
-    --color-woodsmoke-500: #7d7384;
-    --color-woodsmoke-600: #665d6c;
-    --color-woodsmoke-700: #534c58;
-    --color-woodsmoke-800: #48414b;
-    --color-woodsmoke-900: #3e3941;
-    --color-woodsmoke-950: #1a181b;
-    
-    --color-primary: var(--color-green-600);
-    --color-secondary: #3C3C3C;
 
-    --color-background-dark: var(--color-woodsmoke-950);
-    --color-background: #F5FFF8;
+    /* Neutral: Zinc - modern cool gray that complements green */
+    --color-zinc-50: #fafafa;
+    --color-zinc-100: #f4f4f5;
+    --color-zinc-200: #e4e4e7;
+    --color-zinc-300: #d4d4d8;
+    --color-zinc-400: #a1a1aa;
+    --color-zinc-500: #71717a;
+    --color-zinc-600: #52525b;
+    --color-zinc-700: #3f3f46;
+    --color-zinc-800: #27272a;
+    --color-zinc-900: #18181b;
+    --color-zinc-950: #09090b;
+
+    /* Secondary: Slate - cool blue-gray for secondary elements */
+    --color-slate-50: #f8fafc;
+    --color-slate-100: #f1f5f9;
+    --color-slate-200: #e2e8f0;
+    --color-slate-300: #cbd5e1;
+    --color-slate-400: #94a3b8;
+    --color-slate-500: #64748b;
+    --color-slate-600: #475569;
+    --color-slate-700: #334155;
+    --color-slate-800: #1e293b;
+    --color-slate-900: #0f172a;
+    --color-slate-950: #020617;
+
+    /* Semantic color aliases */
+    --color-primary: var(--color-green-600);
+    --color-secondary: var(--color-slate-600);
+
+    /* Background colors - modern and clean */
+    --color-background: #fafdfb;
+    --color-background-dark: var(--color-zinc-950);
+
+    /* Elevated surfaces */
+    --color-elevated: var(--color-zinc-50);
+    --color-elevated-dark: var(--color-zinc-900);
+
+    /* Muted text */
+    --color-muted: var(--color-zinc-500);
+    --color-muted-dark: var(--color-zinc-400);
 }
 
 /* Global syntax highlighting styles */
@@ -171,18 +196,18 @@
 .tiptap {
   hr {
     border: none;
-    border-top: 2px solid #e5e7eb;
+    border-top: 2px solid #e4e4e7; /* zinc-200 */
     margin: 1.5rem 0;
     opacity: 0.8;
     transition: all 0.2s ease;
 
     &:hover {
-      border-top-color: #9ca3af;
+      border-top-color: #a1a1aa; /* zinc-400 */
       opacity: 1;
     }
 
     &.ProseMirror-selectednode {
-      border-top: 2px solid #10b981;
+      border-top: 2px solid #00bc2d; /* primary green */
       opacity: 1;
     }
   }

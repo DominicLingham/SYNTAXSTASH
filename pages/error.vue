@@ -8,21 +8,26 @@ const error = route.query.error || 'An unknown error occured'
 </script>
 
 <template>
-  <div class="min-h-screen flex justify-center items-center bg-background dark:bg-background-dark">
-    <div class="flex flex-col items-center gap-4">
-      <ULink to="/" class="flex flex-col items-center max-w-1/3">
-        <img src="/SyntaxStashLogo.png" width="150px">
+  <div class="min-h-screen flex justify-center items-center bg-zinc-50 dark:bg-zinc-950">
+    <div class="flex flex-col items-center gap-6 p-8">
+      <ULink to="/" class="flex flex-col items-center">
+        <img src="/SyntaxStashLogo.png" width="120px" class="opacity-90">
       </ULink>
-      <h1 class="text-3xl text-primary font-bold">
-        Oh no! {{ error }}
-      </h1>
-      <ULink
-        as="button"
+      <div class="text-center">
+        <h1 class="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">
+          Oh no!
+        </h1>
+        <p class="text-zinc-600 dark:text-zinc-400">
+          {{ error }}
+        </p>
+      </div>
+      <UButton
         to="/"
-        class="font-semibold"
+        variant="outline"
+        color="primary"
       >
         Back to home
-      </ULink>
+      </UButton>
     </div>
   </div>
 </template>

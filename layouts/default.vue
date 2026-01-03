@@ -5,7 +5,7 @@ await authStore.init()
 </script>
 
 <template>
-  <div class="text-secondary flex min-h-screen flex-col bg-background dark:bg-background-dark dark:text-white">
+  <div class="flex min-h-screen flex-col bg-background text-zinc-800 dark:bg-background-dark dark:text-zinc-100">
     <AppNavBar />
     <UContainer class="flex-1 flex flex-col">
       <slot />

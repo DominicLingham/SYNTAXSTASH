@@ -7,19 +7,11 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="min-h-screen flex justify-center items-center bg-background dark:bg-background-dark">
+  <div class="min-h-screen flex justify-center items-center bg-zinc-50 dark:bg-zinc-950">
     <AuthCard>
       <div class="flex flex-col gap-3">
         <OAuthLogin />
-        <!--        <USeparator label="OR" /> -->
-        <!--        <LoginForm /> -->
       </div>
-      <!--      <template #action> -->
-      <!--        <p>Need an account?</p> -->
-      <!--        <ULink to="/sign-up" class="text-primary font-semibold"> -->
-      <!--          Sign up -->
-      <!--        </ULink> -->
-      <!--      </template> -->
     </AuthCard>
   </div>
 </template>
