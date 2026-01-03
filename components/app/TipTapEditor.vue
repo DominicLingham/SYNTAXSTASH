@@ -50,7 +50,7 @@ const editor = useEditor({
   extensions,
   editorProps: {
     attributes: {
-      class: 'prose prose-sm dark:prose-invert max-w-none bg-elevated border-2 border-gray-300 p-4 min-h-[12rem] max-h-[24rem] rounded-md overflow-y-auto outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/20 hover:border-gray-400',
+      class: 'prose prose-sm dark:prose-invert max-w-none bg-zinc-50 dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-700 p-4 min-h-[12rem] max-h-[24rem] rounded-lg overflow-y-auto outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/20 hover:border-zinc-300 dark:hover:border-zinc-600',
     },
   },
   editable: !props.readonly,
@@ -156,88 +156,88 @@ const languageOptions = [
         >
           <UButton
             variant="ghost"
-            :class="{ 'bg-primary': editor?.isActive('bold') }"
-            class="rounded-sm cursor-pointer p-1 text-gray-900 dark:text-white hover:text-primary"
+            :class="{ 'bg-primary text-white': editor?.isActive('bold') }"
+            class="rounded-md cursor-pointer p-1.5 text-zinc-700 dark:text-zinc-200 hover:text-primary hover:bg-zinc-100 dark:hover:bg-zinc-800"
             icon="tabler:bold"
             @click="editor.chain().focus().toggleBold().run()"
           />
           <UButton
             variant="ghost"
-            :class="{ 'bg-primary': editor?.isActive('italic') }"
-            class="rounded-sm cursor-pointer p-1 text-gray-900 dark:text-white hover:text-primary"
+            :class="{ 'bg-primary text-white': editor?.isActive('italic') }"
+            class="rounded-md cursor-pointer p-1.5 text-zinc-700 dark:text-zinc-200 hover:text-primary hover:bg-zinc-100 dark:hover:bg-zinc-800"
             icon="tabler:italic"
             @click="editor.chain().focus().toggleItalic().run()"
           />
           <UButton
             variant="ghost"
             icon="tabler:underline"
-            :class="{ 'bg-primary': editor?.isActive('underline') }"
-            class="rounded-sm cursor-pointer p-1 text-gray-900 dark:text-white hover:text-primary"
+            :class="{ 'bg-primary text-white': editor?.isActive('underline') }"
+            class="rounded-md cursor-pointer p-1.5 text-zinc-700 dark:text-zinc-200 hover:text-primary hover:bg-zinc-100 dark:hover:bg-zinc-800"
             @click="editor.chain().focus().toggleUnderline().run()"
           />
           <UButton
             variant="ghost"
             label="h1"
-            :class="{ 'bg-primary': editor?.isActive('heading', { level: 1 }) }"
-            class="rounded-sm cursor-pointer p-1 text-gray-900 dark:text-white hover:text-primary"
+            :class="{ 'bg-primary text-white': editor?.isActive('heading', { level: 1 }) }"
+            class="rounded-md cursor-pointer p-1.5 text-zinc-700 dark:text-zinc-200 hover:text-primary hover:bg-zinc-100 dark:hover:bg-zinc-800"
             @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
           />
           <UButton
             variant="ghost"
             label="h2"
-            :class="{ 'bg-primary': editor?.isActive('heading', { level: 2 }) }"
-            class="rounded-sm cursor-pointer p-1 text-gray-900 dark:text-white hover:text-primary"
+            :class="{ 'bg-primary text-white': editor?.isActive('heading', { level: 2 }) }"
+            class="rounded-md cursor-pointer p-1.5 text-zinc-700 dark:text-zinc-200 hover:text-primary hover:bg-zinc-100 dark:hover:bg-zinc-800"
             @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
           />
           <UButton
             variant="ghost"
             label="h3"
-            :class="{ 'bg-primary': editor?.isActive('heading', { level: 3 }) }"
-            class="rounded-sm cursor-pointer p-1 text-gray-900 dark:text-white hover:text-primary"
+            :class="{ 'bg-primary text-white': editor?.isActive('heading', { level: 3 }) }"
+            class="rounded-md cursor-pointer p-1.5 text-zinc-700 dark:text-zinc-200 hover:text-primary hover:bg-zinc-100 dark:hover:bg-zinc-800"
             @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
           />
           <UButton
             variant="ghost"
             label="Undo"
-            class="rounded-sm cursor-pointer p-1 text-gray-900 dark:text-white hover:text-primary"
+            class="rounded-md cursor-pointer p-1.5 text-zinc-700 dark:text-zinc-200 hover:text-primary hover:bg-zinc-100 dark:hover:bg-zinc-800"
             :disabled="!editor?.can().chain().focus().undo().run()"
             @click="editor.chain().focus().undo().run()"
           />
           <UButton
             variant="ghost"
             label="Redo"
-            class="rounded-sm cursor-pointer p-1 text-gray-900 dark:text-white hover:text-primary"
+            class="rounded-md cursor-pointer p-1.5 text-zinc-700 dark:text-zinc-200 hover:text-primary hover:bg-zinc-100 dark:hover:bg-zinc-800"
             :disabled="!editor?.can().chain().focus().redo().run()"
             @click="editor.chain().focus().redo().run()"
           />
           <UButton
             variant="ghost"
             icon="tabler:list"
-            class="rounded-sm cursor-pointer p-1 text-gray-900 dark:text-white hover:text-primary"
-            :class="{ 'bg-primary': editor?.isActive('bulletList') }"
+            class="rounded-md cursor-pointer p-1.5 text-zinc-700 dark:text-zinc-200 hover:text-primary hover:bg-zinc-100 dark:hover:bg-zinc-800"
+            :class="{ 'bg-primary text-white': editor?.isActive('bulletList') }"
             @click="editor.chain().focus().toggleBulletList().run()"
           />
           <UButton
             variant="ghost"
             icon="tabler:list-numbers"
-            class="rounded-sm cursor-pointer p-1 text-gray-900 dark:text-white hover:text-primary"
-            :class="{ 'bg-primary': editor?.isActive('orderedList') }"
+            class="rounded-md cursor-pointer p-1.5 text-zinc-700 dark:text-zinc-200 hover:text-primary hover:bg-zinc-100 dark:hover:bg-zinc-800"
+            :class="{ 'bg-primary text-white': editor?.isActive('orderedList') }"
             @click="editor.chain().focus().toggleOrderedList().run()"
           />
 
           <UButton
             variant="ghost"
             icon="codicon:horizontal-rule"
-            class="rounded-sm cursor-pointer p-1 text-gray-900 dark:text-white hover:text-primary"
-            :class="{ 'bg-primary': editor?.isActive('horizontalRule') }"
+            class="rounded-md cursor-pointer p-1.5 text-zinc-700 dark:text-zinc-200 hover:text-primary hover:bg-zinc-100 dark:hover:bg-zinc-800"
+            :class="{ 'bg-primary text-white': editor?.isActive('horizontalRule') }"
             @click="editor.chain().focus().setHorizontalRule().run()"
           />
 
           <UButton
             variant="ghost"
             icon="tabler:code"
-            class="rounded-sm cursor-pointer p-1 text-gray-900 dark:text-white hover:text-primary"
-            :class="{ 'bg-primary': editor?.isActive('codeBlock') }"
+            class="rounded-md cursor-pointer p-1.5 text-zinc-700 dark:text-zinc-200 hover:text-primary hover:bg-zinc-100 dark:hover:bg-zinc-800"
+            :class="{ 'bg-primary text-white': editor?.isActive('codeBlock') }"
             @click="editor.chain().focus().toggleCodeBlock().run()"
           />
 
@@ -273,14 +273,14 @@ const languageOptions = [
 <style lang="scss">
 /* Dark mode styles for hr */
 .dark .tiptap hr {
-  border-top-color: #4b5563;
+  border-top-color: #3f3f46; /* zinc-700 */
 
   &:hover {
-    border-top-color: #6b7280;
+    border-top-color: #52525b; /* zinc-600 */
   }
 
   &.ProseMirror-selectednode {
-    border-top-color: #34d399;
+    border-top-color: #00bc2d; /* primary green */
   }
 }
 

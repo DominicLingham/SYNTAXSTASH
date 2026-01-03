@@ -6,22 +6,21 @@ const authStore = useAuthStore()
 </script>
 
 <template>
-  <nav class="sticky top-0 z-10 backdrop-blur-md">
+  <nav class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-zinc-950/80 border-b border-zinc-200/50 dark:border-zinc-800/50">
     <UContainer>
-      <div class="flex justify-between items-center py-4">
-        <div>
-          <NuxtLink
-            to="/"
-            class="text-xl font-bold flex items-center md:text-3xl "
+      <div class="flex justify-between items-center py-3">
+        <NuxtLink
+          to="/"
+          class="flex items-center"
+        >
+          <img
+            src="/SyntaxStashLogoFull.png"
+            width="180px"
+            class="dark:brightness-110"
           >
-            <img
-              src="/SyntaxStashLogoFull.png"
-              width="200px"
-            >
-          </NuxtLink>
-        </div>
+        </NuxtLink>
 
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-3">
           <UButton
             v-if="!authStore.user"
             to="/login"
