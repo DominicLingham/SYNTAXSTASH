@@ -13,6 +13,12 @@ const items = ref<DropdownMenuItem[]>([
     onSelect: () => router.push('/dashboard'),
   },
   {
+    label: 'Account',
+    icon: 'mingcute:user-3-fill',
+    type: 'link',
+    onSelect: () => router.push('/dashboard/account'),
+  },
+  {
     label: 'Logout',
     icon: 'i-lucide-log-out',
     type: 'link',
