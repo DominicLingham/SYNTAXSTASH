@@ -89,11 +89,11 @@ function formatDate(dateString: string) {
 </script>
 
 <template>
-  <div class="py-6 max-w-2xl">
+  <div class="py-6 max-w-2xl flex flex-col gap-6">
     <div class="flex items-center justify-between mb-6">
-      <h1 class="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+      <h2 class="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
         Account Details
-      </h1>
+      </h2>
       <UButton
         v-if="!isEditing"
         variant="subtle"
